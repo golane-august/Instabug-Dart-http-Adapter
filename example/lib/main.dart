@@ -6,9 +6,6 @@ Future<void> main() async {
   runApp(const MyApp());
   Instabug.start(
       'ed6f659591566da19b67857e1b9d40ab', [InvocationEvent.floatingButton]);
-  final client = InstabugHttpClient();
-  final response = await client.get(Uri.parse('https://google.com'));
-  print(response.body);
 }
 
 class MyApp extends StatelessWidget {
@@ -36,8 +33,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  final client = InstabugHttpClient();
 
-  void _incrementCounter() {
+  void _incrementCounter() async {
+    final response = await client.get(Uri.parse('https://google.com'));
+    print(response.body);
+
     setState(() {
       _counter++;
     });
