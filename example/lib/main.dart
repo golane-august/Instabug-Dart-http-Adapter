@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final client = InstabugHttpClient();
 
   void _incrementCounter() async {
-    final response = await client.get(Uri.parse('https://google.com'));
+    final response = await client.get(Uri.parse('https://www.google.com/search?q=$_counter'));
     print(response.body);
 
     setState(() {
